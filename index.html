@@ -2,112 +2,147 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#171912">
-<title>Karen Jobs</title>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-:root{color-scheme:dark;--bg:#171912;--panel:#20231b;--green:#a3a785;--text:#f4f4ed;--muted:#b5b7a8;--border:#393d30}
-*{box-sizing:border-box}
-body{margin:0;padding:24px 15px;background:radial-gradient(ellipse at top,#303526,var(--bg) 65%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif}
-main{max-width:650px;margin:auto}
-header{text-align:center;padding:35px 0 25px}
-.logo{display:grid;place-items:center;margin:0 auto 15px;width:64px;height:64px;border-radius:20px;background:var(--green);color:#171912;font-size:30px;font-weight:900}
-h1{margin:0 0 10px;font-size:32px}
-p{line-height:1.8;color:var(--muted)}
-.panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;margin-bottom:16px}
-h2{font-size:20px;margin:0 0 15px}
-label{display:block;margin:17px 0 8px;font-weight:650;font-size:14px}
-input,select,textarea{width:100%;padding:13px;border:1px solid var(--border);border-radius:10px;background:#151710;color:var(--text);font:inherit}
-textarea{min-height:100px;resize:vertical}
-button{width:100%;padding:14px;margin-top:17px;border:0;border-radius:11px;background:var(--green);color:#171912;font:inherit;font-weight:800;cursor:pointer}
-button:disabled{opacity:.5}
-.secondary{background:#303427;color:var(--text);border:1px solid var(--border)}
-.notice{display:none;padding:13px;margin-top:14px;border-radius:10px;line-height:1.8;overflow-wrap:anywhere}
-.success,.error{display:block}
-.success{background:#253425;color:#d5f4cf}
-.error{background:#3b2623;color:#ffd0c8}
-.hidden{display:none!important}
-small,footer{color:var(--muted);line-height:1.8}
-footer{text-align:center;padding:20px}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171912">
+  <title>Karen Jobs</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --bg: #171912;
+      --panel: #20231b;
+      --green: #a3a785;
+      --text: #f4f4ed;
+      --muted: #b5b7a8;
+      --border: #393d30;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 22px 15px;
+      background: radial-gradient(ellipse at top, #303526, var(--bg) 65%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    }
+    main { max-width: 650px; margin: auto; }
+    header { text-align: center; padding: 35px 0 25px; }
+    .logo {
+      display: grid; place-items: center; margin: 0 auto 15px;
+      width: 64px; height: 64px; border-radius: 20px;
+      background: var(--green); color: #171912;
+      font-size: 30px; font-weight: 900;
+    }
+    h1 { margin: 0 0 10px; font-size: 32px; }
+    p { line-height: 1.8; color: var(--muted); }
+    .panel {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 18px; padding: 22px; margin-bottom: 16px;
+    }
+    h2 { font-size: 20px; margin: 0 0 15px; }
+    label { display: block; margin: 17px 0 8px; font-size: 14px; font-weight: 650; }
+    input, select, textarea {
+      width: 100%; padding: 13px; border: 1px solid var(--border);
+      border-radius: 10px; background: #151710; color: var(--text); font: inherit;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    button {
+      width: 100%; padding: 14px; margin-top: 17px; border: 0;
+      border-radius: 11px; background: var(--green); color: #171912;
+      font: inherit; font-weight: 800; cursor: pointer;
+    }
+    button:disabled { opacity: .55; cursor: wait; }
+    .secondary { background: #303427; color: var(--text); border: 1px solid var(--border); }
+    .notice { display: none; padding: 13px; margin-top: 14px; border-radius: 10px; line-height: 1.8; overflow-wrap: anywhere; }
+    .success { display: block; background: #253425; color: #d5f4cf; }
+    .error { display: block; background: #3b2623; color: #ffd0c8; }
+    .hidden { display: none !important; }
+    small, footer { color: var(--muted); line-height: 1.8; }
+    footer { text-align: center; padding: 20px; }
+  </style>
 </head>
 <body>
 <main>
-<header>
-<div class="logo">K</div>
-<h1>Karen Jobs</h1>
-<p>بوابة التقديم لفريق Karen<br>اختر الوظيفة المناسبة لك وقدم طلبك.</p>
-</header>
+  <header>
+    <div class="logo">K</div>
+    <h1>Karen Jobs</h1>
+    <p>بوابة التقديم لفريق Karen<br>اختر الوظيفة المناسبة لك وقدم طلبك.</p>
+  </header>
 
-<section class="panel" id="loginPanel">
-<h2>تسجيل الدخول</h2>
-<p>سجل دخولك باستخدام Discord لربط طلبك بحسابك.</p>
-<button id="loginBtn">تسجيل الدخول عبر Discord</button>
-<div id="loginNotice" class="notice" role="status"></div>
-</section>
+  <section class="panel" id="loginPanel">
+    <h2>تسجيل الدخول</h2>
+    <p>سجّل دخولك باستخدام Discord لربط طلبك بحسابك.</p>
+    <button id="loginBtn">تسجيل الدخول عبر Discord</button>
+    <div id="loginNotice" class="notice" role="status"></div>
+  </section>
 
-<section class="panel hidden" id="formPanel">
-<h2>استبيان التقديم</h2>
-<p>حساب Discord: <strong id="accountName"></strong></p>
-<form id="applicationForm">
-<label for="job">الوظيفة</label>
-<select id="job" required>
-<option value="">اختر الوظيفة</option>
-<option>سكربتر</option>
-<option>إداري</option>
-<option>دعم فني</option>
-<option>تيستر</option>
-<option>وسيط</option>
-<option>خبير هاك</option>
-</select>
+  <section class="panel hidden" id="formPanel">
+    <h2>استبيان التقديم</h2>
+    <p>حساب Discord: <strong id="accountName"></strong></p>
 
-<label for="name">اسمك</label>
-<input id="name" maxlength="80" required>
+    <form id="applicationForm">
+      <label for="job">الوظيفة</label>
+      <select id="job" required>
+        <option value="">اختر الوظيفة</option>
+        <option value="سكربتر">سكربتر</option>
+        <option value="إداري">إداري</option>
+        <option value="دعم فني">دعم فني</option>
+        <option value="تيستر">تيستر</option>
+        <option value="وسيط">وسيط</option>
+        <option value="خبير هاك">خبير هاك</option>
+      </select>
 
-<label for="age">عمرك</label>
-<input id="age" type="number" min="13" max="99" required>
+      <label for="name">اسمك</label>
+      <input id="name" maxlength="80" required>
 
-<label for="experience">خبرتك السابقة</label>
-<textarea id="experience" maxlength="2000" required></textarea>
+      <label for="age">عمرك</label>
+      <input id="age" type="number" min="13" max="99" required>
 
-<label for="availability">وقت تفرغك</label>
-<select id="availability" required>
-<option value="">اختر</option>
-<option>أقل من ساعة يوميًا</option>
-<option>من ساعة إلى ساعتين يوميًا</option>
-<option>أكثر من ساعتين يوميًا</option>
-<option>حسب وقت فراغي</option>
-</select>
+      <label for="experience">خبرتك السابقة</label>
+      <textarea id="experience" maxlength="2000" required></textarea>
 
-<div id="videoFields" class="hidden">
-<label for="workLink">رابط فيديو أعمالك</label>
-<input id="workLink" type="url" maxlength="500" placeholder="https://...">
-<small>مطلوب للسكربتر وخبير هاك.</small>
-</div>
+      <label for="availability">وقت تفرغك</label>
+      <select id="availability" required>
+        <option value="">اختر</option>
+        <option>أقل من ساعة يوميًا</option>
+        <option>من ساعة إلى ساعتين يوميًا</option>
+        <option>أكثر من ساعتين يوميًا</option>
+        <option>حسب وقت فراغي</option>
+      </select>
 
-<label for="reason">لماذا تريد الانضمام إلى Karen؟</label>
-<textarea id="reason" maxlength="1500" required></textarea>
+      <div id="videoFields" class="hidden">
+        <label for="workLink">رابط فيديو أعمالك</label>
+        <input id="workLink" type="url" maxlength="500" placeholder="https://...">
+        <small>مطلوب لوظيفة السكربتر وخبير هاك.</small>
+      </div>
 
-<button id="submitBtn" type="submit">إرسال الاستبيان</button>
-<div id="formNotice" class="notice" role="status"></div>
-</form>
-<button class="secondary" id="logoutBtn">تسجيل الخروج</button>
-</section>
-<footer>Karen Jobs © <span id="year"></span></footer>
+      <label for="reason">لماذا تريد الانضمام إلى Karen؟</label>
+      <textarea id="reason" maxlength="1500" required></textarea>
+
+      <button id="submitBtn" type="submit">إرسال الاستبيان</button>
+      <div id="formNotice" class="notice" role="status"></div>
+    </form>
+    <button class="secondary" id="logoutBtn" type="button">تسجيل الخروج</button>
+  </section>
+
+  <footer>Karen Jobs © <span id="year"></span></footer>
 </main>
 
 <script>
+"use strict";
+
 const SUPABASE_URL = "https://svjlwnyokykyewkfrrtf.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_Q0uHnNhrLGhbQieLzvSj0g_L2DWZAm6";
-const ADMIN_DISCORD_ID = "1509046008393371708";
+const SITE_URL = "https://hamoudroblox732.github.io/Karen-jobs/";
 
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
+
 const $ = id => document.getElementById(id);
 $("year").textContent = new Date().getFullYear();
 
-function notice(id, message, type) {
+function showNotice(id, message, type) {
   $(id).textContent = message;
   $(id).className = "notice " + type;
 }
@@ -115,120 +150,144 @@ function clearNotice(id) {
   $(id).textContent = "";
   $(id).className = "notice";
 }
-function updateVideo() {
-  const required = ["سكربتر", "خبير هاك"].includes($("job").value);
-  $("videoFields").classList.toggle("hidden", !required);
-  $("workLink").required = required;
+function getDiscordName(user) {
+  return user.user_metadata?.full_name ||
+         user.user_metadata?.name ||
+         user.user_metadata?.user_name ||
+         "Discord user";
 }
-$("job").addEventListener("change", updateVideo);
-
-function discordId(user) {
-  return user?.user_metadata?.provider_id ||
-         user?.user_metadata?.sub ||
-         "";
+function updateVideoFields() {
+  const needsVideo = ["سكربتر", "خبير هاك"].includes($("job").value);
+  $("videoFields").classList.toggle("hidden", !needsVideo);
+  $("workLink").required = needsVideo;
 }
+$("job").addEventListener("change", updateVideoFields);
 
-async function refresh() {
-  const {data, error} = await db.auth.getSession();
+async function refreshSession() {
+  const { data, error } = await db.auth.getSession();
+
   if (error) {
-    notice("loginNotice", "تعذر التحقق من تسجيل الدخول.", "error");
+    showNotice("loginNotice", "تعذر التحقق من تسجيل الدخول. حاول مجددًا.", "error");
     return;
   }
+
   const user = data.session?.user;
   $("loginPanel").classList.toggle("hidden", !!user);
   $("formPanel").classList.toggle("hidden", !user);
 
-  if (user) {
-    $("accountName").textContent =
-      user.user_metadata?.full_name ||
-      user.user_metadata?.name ||
-      user.user_metadata?.user_name ||
-      "حساب Discord";
-
-    // هذه إشارة واجهة فقط، وليست حماية لصلاحيات قاعدة البيانات.
-    if (discordId(user) === ADMIN_DISCORD_ID) {
-      notice("formNotice", "تم التعرف على حساب المسؤول. افتح صفحة الإدارة بعد إعدادها.", "success");
-    }
-  }
+  if (user) $("accountName").textContent = getDiscordName(user);
 }
 
 $("loginBtn").addEventListener("click", async () => {
   clearNotice("loginNotice");
   $("loginBtn").disabled = true;
-  const redirectTo = window.location.origin + window.location.pathname;
-  const {error} = await db.auth.signInWithOAuth({
+
+  const { error } = await db.auth.signInWithOAuth({
     provider: "discord",
-    options: {redirectTo}
+    options: { redirectTo: SITE_URL }
   });
+
   if (error) {
-    notice("loginNotice", "تعذر تسجيل الدخول. تحقق من إعدادات Discord في Supabase.", "error");
+    showNotice("loginNotice", "تعذر تسجيل الدخول. تأكد من تفعيل Discord في Supabase وإضافة رابط الموقع ضمن Redirect URLs.", "error");
     $("loginBtn").disabled = false;
   }
 });
 
 $("logoutBtn").addEventListener("click", async () => {
-  await db.auth.signOut();
-  window.location.reload();
+  const { error } = await db.auth.signOut();
+  if (error) {
+    showNotice("formNotice", "تعذر تسجيل الخروج. حاول مجددًا.", "error");
+    return;
+  }
+  window.location.href = SITE_URL;
 });
 
 $("applicationForm").addEventListener("submit", async event => {
   event.preventDefault();
   clearNotice("formNotice");
 
-  const {data, error: sessionError} = await db.auth.getSession();
-  const user = data.session?.user;
+  const { data: sessionData, error: sessionError } = await db.auth.getSession();
+  const user = sessionData.session?.user;
+
   if (sessionError || !user) {
-    notice("formNotice", "سجل دخولك عبر Discord أولًا.", "error");
+    showNotice("formNotice", "سجّل دخولك عبر Discord أولًا.", "error");
     return;
   }
 
   const job = $("job").value;
-  const link = $("workLink").value.trim();
+  const workLink = $("workLink").value.trim();
 
-  if (["سكربتر", "خبير هاك"].includes(job) && !link) {
-    notice("formNotice", "أضف رابط فيديو أعمالك.", "error");
+  if (["سكربتر", "خبير هاك"].includes(job) && !workLink) {
+    showNotice("formNotice", "أضف رابط فيديو أعمالك لهذه الوظيفة.", "error");
     return;
   }
 
-  if (link) {
+  if (workLink) {
     try {
-      if (!["https:", "http:"].includes(new URL(link).protocol)) throw Error();
+      const url = new URL(workLink);
+      if (!["https:", "http:"].includes(url.protocol)) throw new Error();
     } catch {
-      notice("formNotice", "رابط الفيديو غير صحيح.", "error");
+      showNotice("formNotice", "رابط الفيديو غير صحيح.", "error");
       return;
     }
   }
 
-  const answers = {
-    discord_user_id: user.user_metadata?.provider_id || user.user_metadata?.sub || user.id,
-    discord_username: user.user_metadata?.full_name ||
-      user.user_metadata?.name || user.user_metadata?.user_name || "Discord user",
+  const discordId = user.user_metadata?.provider_id ||
+                    user.user_metadata?.sub;
+
+  if (!discordId) {
+    showNotice("formNotice", "لم نتمكن من تحديد Discord User ID من بيانات تسجيل الدخول. تحقق من إعدادات مزود Discord.", "error");
+    return;
+  }
+
+  const application = {
+    discord_user_id: String(discordId),
+    discord_username: getDiscordName(user),
     job,
     applicant_name: $("name").value.trim(),
     age: Number($("age").value),
     experience: $("experience").value.trim(),
     availability: $("availability").value,
-    work_link: link || null,
+    work_link: workLink || null,
     reason: $("reason").value.trim()
   };
 
+  if (!application.applicant_name || !application.experience ||
+      !application.reason || application.age < 13 || application.age > 99) {
+    showNotice("formNotice", "راجع بياناتك وتأكد من تعبئة جميع الحقول بشكل صحيح.", "error");
+    return;
+  }
+
   $("submitBtn").disabled = true;
-  const {error} = await db.from("applications").insert(answers);
+
+  const { error } = await db.from("applications").insert(application);
+
   $("submitBtn").disabled = false;
 
   if (error) {
-    console.error(error);
-    notice("formNotice", "تعذر إرسال الطلب. يجب إعداد جدول applications وسياسات قاعدة البيانات أولًا.", "error");
+    console.error("Application submission failed:", error);
+    showNotice(
+      "formNotice",
+      "لم يتم إرسال الطلب. تأكد أن جدول applications وسياسات قاعدة البيانات معدّة بشكل صحيح.",
+      "error"
+    );
     return;
   }
 
   $("applicationForm").reset();
-  updateVideo();
-  notice("formNotice", "تم إرسال استبيانك بنجاح! سيتم مراجعة طلبك والتواصل معك بعد المراجعة.", "success");
+  updateVideoFields();
+  showNotice(
+    "formNotice",
+    "تم إرسال استبيانك بنجاح! سيتم مراجعة طلبك والتواصل معك بعد المراجعة.",
+    "success"
+  );
 });
 
-db.auth.onAuthStateChange(() => { refresh(); });
-refresh();
+db.auth.onAuthStateChange(() => {
+  refreshSession();
+});
+
+refreshSession();
 </script>
 </body>
 </html>
